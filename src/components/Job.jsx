@@ -1,10 +1,13 @@
 import { Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AiTwotoneLike, AiFillDislike } from "react-icons/ai";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Job = ({ data, index }) => {
   const dispatch = useDispatch();
+  const favorites = useSelector((state) => state.favorites.content);
+  const isFavorite = favorites.some((job) => data._id === job._id);
+  console.log(isFavorite);
 
   return (
     <Row
@@ -26,31 +29,35 @@ const Job = ({ data, index }) => {
           {data.title}
         </a>
       </Col>
+
       <Col xs={1}>
-        <Button
-          variant="outline-success"
-          className="d-flex justify-content-center align-items-center px-2"
-          onClick={() => {
-            dispatch({
-              type: "ADD_TO_FAV",
-              payload: data,
-            });
-          }}
-        >
-          <AiTwotoneLike />
-        </Button>
-        <Button
-          variant="outline-danger"
-          className="d-flex justify-content-center align-items-center px-2"
-          onClick={() => {
-            dispatch({
-              type: "REMOVE_FROM_FAV",
-              payload: index,
-            });
-          }}
-        >
-          <AiFillDislike />
-        </Button>
+        {isFavorite ? (
+          <Button
+            variant="outline-danger"
+            className="d-flex justify-content-center align-items-center px-2"
+            onClick={() => {
+              dispatch({
+                type: "REMOVE_FROM_FAV",
+                payload: index,
+              });
+            }}
+          >
+            <AiFillDislike />
+          </Button>
+        ) : (
+          <Button
+            variant="outline-success"
+            className="d-flex justify-content-center align-items-center px-2"
+            onClick={() => {
+              dispatch({
+                type: "ADD_TO_FAV",
+                payload: data,
+              });
+            }}
+          >
+            <AiTwotoneLike />
+          </Button>
+        )}
       </Col>
     </Row>
   );

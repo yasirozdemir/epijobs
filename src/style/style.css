@@ -1,1 +1,4 @@
-
+.jobCard button:focus,
+.table tbody button:focus {
+  box-shadow: none;
+}
