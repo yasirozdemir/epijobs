@@ -33,8 +33,8 @@ const CompanySearchResults = () => {
     <Container>
       <Row>
         <Col>
-          {jobs.map((jobData) => (
-            <Job key={jobData._id} data={jobData} />
+          {jobs.map((jobData, index) => (
+            <Job key={jobData._id} data={jobData} index={index} />
           ))}
         </Col>
       </Row>

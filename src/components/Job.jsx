@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AiTwotoneLike, AiFillDislike } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 
-const Job = ({ data }) => {
+const Job = ({ data, index }) => {
   const dispatch = useDispatch();
 
   return (
@@ -39,12 +39,18 @@ const Job = ({ data }) => {
         >
           <AiTwotoneLike />
         </Button>
-        {/* <Button
+        <Button
           variant="outline-danger"
           className="d-flex justify-content-center align-items-center px-2"
+          onClick={() => {
+            dispatch({
+              type: "REMOVE_FROM_FAV",
+              payload: index,
+            });
+          }}
         >
           <AiFillDislike />
-        </Button> */}
+        </Button>
       </Col>
     </Row>
   );

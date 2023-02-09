@@ -19,7 +19,9 @@ const mainReducer = (state = initialState, action) => {
         ...state,
         favorites: {
           ...state.favorites,
-          content: state.cart.content.filter((el, i) => i !== action.payload),
+          content: state.favorites.content.filter(
+            (el, i) => i !== action.payload
+          ),
         },
       };
     default:
