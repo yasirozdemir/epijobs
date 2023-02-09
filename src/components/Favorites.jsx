@@ -10,13 +10,13 @@ const Favorites = () => {
 
   return (
     <>
-      <Container className="mt-3">
+      <Container>
         <Row className="justify-content-center">
           <Col
             xs={10}
             className="d-flex justify-content-between align-items-center mx-auto my-3"
           >
-            <h1 className="mb-3" variant="primary">
+            <h1 className="my-2" variant="primary">
               Favorites
             </h1>
             <Button
