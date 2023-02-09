@@ -7,7 +7,6 @@ const Job = ({ data, index }) => {
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.favorites.content);
   const isFavorite = favorites.some((job) => data._id === job._id);
-  console.log(isFavorite);
 
   return (
     <Row
