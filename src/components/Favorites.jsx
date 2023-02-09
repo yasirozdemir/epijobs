@@ -1,9 +1,11 @@
 import { Container, Row, Col, Button, Table } from "react-bootstrap";
 import { AiFillDislike } from "react-icons/ai";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 const Favorites = () => {
   const favorites = useSelector((state) => state.favorites.content);
+  const dispatch = useDispatch();
+
   return (
     <>
       <Container>
@@ -35,6 +37,12 @@ const Favorites = () => {
                       <Button
                         variant="outline-danger"
                         className="d-flex justify-content-center align-items-center px-2"
+                        onClick={() => {
+                          dispatch({
+                            type: "REMOVE_FROM_FAV",
+                            payload: index,
+                          });
+                        }}
                       >
                         <AiFillDislike />
                       </Button>
