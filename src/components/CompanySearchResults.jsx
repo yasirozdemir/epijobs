@@ -1,42 +1,32 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import Job from "./Job";
 import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getCompanyJobData } from "../redux/actions";
+import Job from "./Job";
 
 const CompanySearchResults = () => {
-  const [jobs, setJobs] = useState([]);
+  const dispatch = useDispatch();
+  const jobs = useSelector((state) => state.job.companyJobs[0]);
+
+  console.log(jobs);
   const params = useParams();
 
-  const baseEndpoint =
-    "https://strive-benchmark.herokuapp.com/api/jobs?search=";
-
   useEffect(() => {
-    getJobs();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    dispatch(getCompanyJobData(params.companyName));
+    // eslint-disable-next-line
   }, []);
-
-  const getJobs = async () => {
-    try {
-      const response = await fetch(baseEndpoint + params.companyName);
-      if (response.ok) {
-        const { data } = await response.json();
-        setJobs(data);
-      } else {
-        alert("Error fetching results");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <Container>
       <Row>
-        <Col>
-          {jobs.map((jobData, index) => (
-            <Job key={jobData._id} data={jobData} index={index} />
-          ))}
-        </Col>
+        {jobs && (
+          <Col>
+            {jobs.map((jobData, index) => (
+              <Job key={jobData._id} data={jobData} index={index} />
+            ))}
+          </Col>
+        )}
       </Row>
     </Container>
   );

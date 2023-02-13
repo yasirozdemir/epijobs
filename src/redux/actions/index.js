@@ -1,6 +1,7 @@
 export const ADD_TO_FAV = "ADD_TO_FAV";
 export const REMOVE_FROM_FAV = "REMOVE_FROM_FAV";
 export const SET_JOB_DATA = "SET_JOB_DATA";
+export const SET_COMPANY_JOB_DATA = "SET_COMPANY_JOB_DATA";
 
 export const addToFavAction = (job) => {
   return {
@@ -59,4 +60,23 @@ export const getJobData = (query) => {
   };
 };
 
-export const trial = () => {};
+export const getCompanyJobData = (companyName) => {
+  return async (dispatch) => {
+    try {
+      const response = await fetch(
+        "https://strive-benchmark.herokuapp.com/api/jobs?search=" + companyName
+      );
+      if (response.ok) {
+        const companyJobData = await response.json();
+        dispatch({
+          type: SET_COMPANY_JOB_DATA,
+          payload: companyJobData.data,
+        });
+      } else {
+        console.log("error");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
