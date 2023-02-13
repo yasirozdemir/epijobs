@@ -11,7 +11,11 @@ const MainSearch = () => {
   const dispatch = useDispatch();
 
   const [query, setQuery] = useState("");
-  const jobs = useSelector((state) => state.job.jobs);
+  const jobs = useSelector((state) => state.job);
+  console.log(
+    "state: ",
+    useSelector((state) => state)
+  );
 
   const handleChange = (e) => {
     setQuery(e.target.value);

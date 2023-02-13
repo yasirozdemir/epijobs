@@ -4,7 +4,7 @@ const initialFavState = {
   content: [],
 };
 
-const favReducer = (state = initialFavState, action) => {
+const FavReducer = (state = initialFavState, action) => {
   switch (action.type) {
     case ADD_TO_FAV:
       return {
@@ -21,4 +21,4 @@ const favReducer = (state = initialFavState, action) => {
   }
 };
 
-export default favReducer;
+export default FavReducer;

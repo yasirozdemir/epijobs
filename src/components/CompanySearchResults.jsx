@@ -2,17 +2,17 @@ import { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getCompanyJobData } from "../redux/actions";
+import { getCompanyData } from "../redux/actions";
 import Job from "./Job";
 import GoSerchPageButton from "./GoSearchPageButton";
 
 const CompanySearchResults = () => {
   const dispatch = useDispatch();
-  const jobs = useSelector((state) => state.job.companyJobs);
+  const jobs = useSelector((state) => state.company);
   const params = useParams();
 
   useEffect(() => {
-    dispatch(getCompanyJobData(params.companyName));
+    dispatch(getCompanyData(params.companyName));
     // eslint-disable-next-line
   }, []);
 
