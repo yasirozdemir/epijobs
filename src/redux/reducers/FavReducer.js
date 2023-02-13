@@ -14,7 +14,7 @@ const favReducer = (state = initialFavState, action) => {
     case REMOVE_FROM_FAV:
       return {
         ...state,
-        content: state.content.filter((el, i) => i !== action.payload),
+        content: state.content.filter((el) => el._id !== action.payload),
       };
     default:
       return state;

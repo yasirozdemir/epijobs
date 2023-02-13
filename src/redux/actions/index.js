@@ -3,16 +3,15 @@ export const REMOVE_FROM_FAV = "REMOVE_FROM_FAV";
 export const SET_JOB_DATA = "SET_JOB_DATA";
 export const SET_COMPANY_JOB_DATA = "SET_COMPANY_JOB_DATA";
 
-export const addToFavAction = (job) => {
-  return {
-    type: ADD_TO_FAV,
-    payload: job,
-  };
-};
+// export const addToFavAction = (job) => {
+//   return {
+//     type: ADD_TO_FAV,
+//     payload: job,
+//   };
+// };
 
 export const addToFavFunction = (job) => {
-  return async (dispatch, getState) => {
-    console.log(getState());
+  return async (dispatch) => {
     dispatch({
       type: ADD_TO_FAV,
       payload: job,
@@ -20,19 +19,18 @@ export const addToFavFunction = (job) => {
   };
 };
 
-export const removeFromFavAction = (job) => {
-  return {
-    type: REMOVE_FROM_FAV,
-    payload: job,
-  };
-};
+// export const removeFromFavAction = (job) => {
+//   return {
+//     type: REMOVE_FROM_FAV,
+//     payload: job,
+//   };
+// };
 
-export const removeFromFunction = (job) => {
+export const removeFromFavFunction = (jobId) => {
   return async (dispatch, getState) => {
-    console.log(getState());
     dispatch({
       type: REMOVE_FROM_FAV,
-      payload: job,
+      payload: jobId,
     });
   };
 };

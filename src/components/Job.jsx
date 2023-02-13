@@ -2,12 +2,12 @@ import { Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AiTwotoneLike, AiFillDislike } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
-import { addToFavFunction } from "../redux/actions";
+import { addToFavFunction, removeFromFavFunction } from "../redux/actions";
 
-const Job = ({ data, index }) => {
+const Job = ({ job }) => {
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.favorites.content);
-  const isFavorite = favorites.some((job) => data._id === job._id);
+  const isFavorite = favorites.some((Job) => job._id === Job._id);
 
   return (
     <Row
@@ -15,18 +15,18 @@ const Job = ({ data, index }) => {
       style={{ border: "1px solid #00000033", borderRadius: 4 }}
     >
       <Col xs={3}>
-        <Link to={`/${data.company_name}`} className="text-dark">
-          {data.company_name}
+        <Link to={`/${job.company_name}`} className="text-dark">
+          {job.company_name}
         </Link>
       </Col>
       <Col>
         <a
-          href={data.url}
+          href={job.url}
           target="_blank"
           rel="noreferrer"
           className="text-dark"
         >
-          {data.title}
+          {job.title}
         </a>
       </Col>
 
@@ -36,10 +36,7 @@ const Job = ({ data, index }) => {
             variant="outline-danger"
             className="d-flex justify-content-center align-items-center px-2"
             onClick={() => {
-              dispatch({
-                type: "REMOVE_FROM_FAV",
-                payload: index,
-              });
+              dispatch(removeFromFavFunction(job._id));
             }}
           >
             <AiFillDislike />
@@ -49,7 +46,7 @@ const Job = ({ data, index }) => {
             variant="outline-success"
             className="d-flex justify-content-center align-items-center px-2"
             onClick={() => {
-              dispatch(addToFavFunction(data));
+              dispatch(addToFavFunction(job));
             }}
           >
             <AiTwotoneLike />

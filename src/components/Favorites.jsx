@@ -2,6 +2,7 @@ import { Container, Row, Col, Button, Table } from "react-bootstrap";
 import { AiFillDislike } from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { removeFromFavFunction } from "../redux/actions";
 
 const Favorites = () => {
   const favorites = useSelector((state) => state.favorites.content);
@@ -24,7 +25,7 @@ const Favorites = () => {
               className="d-flex justify-content-center align-items-center px-2"
               onClick={() => navigate("/")}
             >
-              Go search page!
+              Go to search page!
             </Button>
           </Col>
           <Col xs={10}>
@@ -42,7 +43,7 @@ const Favorites = () => {
                 {favorites.map((job, index) => (
                   <tr key={index}>
                     <td>
-                      <strong>{index}</strong>
+                      <strong>{index + 1}</strong>
                     </td>
                     <td>{job.company_name}</td>
                     <td>
@@ -54,10 +55,7 @@ const Favorites = () => {
                         variant="outline-danger"
                         className="d-flex justify-content-center align-items-center px-2"
                         onClick={() => {
-                          dispatch({
-                            type: "REMOVE_FROM_FAV",
-                            payload: index,
-                          });
+                          dispatch(removeFromFavFunction(job._id));
                         }}
                       >
                         <AiFillDislike />

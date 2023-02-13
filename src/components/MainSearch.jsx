@@ -50,8 +50,8 @@ const MainSearch = () => {
         </Col>
         {jobs && (
           <Col xs={10} className="mx-auto mb-5">
-            {jobs.map((jobData, index) => (
-              <Job key={jobData._id} data={jobData} index={index} />
+            {jobs.map((jobData) => (
+              <Job key={jobData._id} job={jobData} />
             ))}
           </Col>
         )}

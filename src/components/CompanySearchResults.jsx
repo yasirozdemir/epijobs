@@ -9,7 +9,6 @@ const CompanySearchResults = () => {
   const dispatch = useDispatch();
   const jobs = useSelector((state) => state.job.companyJobs[0]);
 
-  console.log(jobs);
   const params = useParams();
 
   useEffect(() => {
@@ -22,8 +21,8 @@ const CompanySearchResults = () => {
       <Row>
         {jobs && (
           <Col>
-            {jobs.map((jobData, index) => (
-              <Job key={jobData._id} data={jobData} index={index} />
+            {jobs.map((jobData) => (
+              <Job key={jobData._id} job={jobData} />
             ))}
           </Col>
         )}
