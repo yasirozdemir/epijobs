@@ -10,12 +10,12 @@ const JobReducer = (state = initialJobState, action) => {
     case SET_JOB_DATA:
       return {
         ...state,
-        jobs: [action.payload],
+        jobs: action.payload,
       };
     case SET_COMPANY_JOB_DATA:
       return {
         ...state,
-        companyJobs: [action.payload],
+        companyJobs: action.payload,
       };
     default:
       return state;

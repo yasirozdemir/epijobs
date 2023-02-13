@@ -8,8 +8,7 @@ import GoSerchPageButton from "./GoSearchPageButton";
 
 const CompanySearchResults = () => {
   const dispatch = useDispatch();
-  const jobs = useSelector((state) => state.job.companyJobs[0]);
-
+  const jobs = useSelector((state) => state.job.companyJobs);
   const params = useParams();
 
   useEffect(() => {

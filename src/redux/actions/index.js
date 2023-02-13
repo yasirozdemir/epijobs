@@ -44,10 +44,11 @@ export const getJobData = (query) => {
           "&limit=20"
       );
       if (response.ok) {
-        const jobData = await response.json();
+        const { data } = await response.json();
+        console.log(data);
         dispatch({
           type: SET_JOB_DATA,
-          payload: jobData.data,
+          payload: data,
         });
       } else {
         console.log("error");

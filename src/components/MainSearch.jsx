@@ -11,7 +11,7 @@ const MainSearch = () => {
   const dispatch = useDispatch();
 
   const [query, setQuery] = useState("");
-  const jobs = useSelector((state) => state.job.jobs[0]);
+  const jobs = useSelector((state) => state.job.jobs);
 
   const handleChange = (e) => {
     setQuery(e.target.value);
@@ -44,7 +44,7 @@ const MainSearch = () => {
               type="search"
               value={query}
               onChange={handleChange}
-              placeholder="type and press Enter"
+              placeholder="Search for a job..."
             />
           </Form>
         </Col>

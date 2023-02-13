@@ -7,7 +7,7 @@ import { addToFavFunction, removeFromFavFunction } from "../redux/actions";
 const Job = ({ job }) => {
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.favorites.content);
-  const isFavorite = favorites.some((Job) => job._id === Job._id);
+  const isFavorite = favorites.some((j) => job._id === j._id);
 
   return (
     <Row
