@@ -6,7 +6,7 @@ import { removeFromFavFunction } from "../redux/actions";
 import GoSerchPageButton from "./GoSearchPageButton";
 
 const Favorites = () => {
-  const favorites = useSelector((state) => state.favorites.content);
+  const favorites = useSelector((state) => state.favorites);
   const dispatch = useDispatch();
 
   return (

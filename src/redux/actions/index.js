@@ -19,10 +19,10 @@ export const addToFavFunction = (job) => {
   };
 };
 
-// export const removeFromFavAction = (job) => {
+// export const removeFromFavAction = (jobID) => {
 //   return {
 //     type: REMOVE_FROM_FAV,
-//     payload: job,
+//     payload: jobID,
 //   };
 // };
 
@@ -66,7 +66,6 @@ export const getCompanyData = (companyName) => {
       );
       if (response.ok) {
         const { data } = await response.json();
-        console.log(data);
         dispatch({
           type: SET_COMPANY_DATA,
           payload: data,

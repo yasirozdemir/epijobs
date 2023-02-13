@@ -1,21 +1,13 @@
 import { ADD_TO_FAV, REMOVE_FROM_FAV } from "../actions";
 
-const initialFavState = {
-  content: [],
-};
+const initialFavState = [];
 
 const FavReducer = (state = initialFavState, action) => {
   switch (action.type) {
     case ADD_TO_FAV:
-      return {
-        ...state,
-        content: [...state.content, action.payload],
-      };
+      return [...state, action.payload];
     case REMOVE_FROM_FAV:
-      return {
-        ...state,
-        content: state.content.filter((el) => el._id !== action.payload),
-      };
+      return state.filter((el) => el._id !== action.payload);
     default:
       return state;
   }
