@@ -1,5 +1,5 @@
-import { Container, Row, Col, Button, Table } from "react-bootstrap";
-import { AiFillDislike } from "react-icons/ai";
+import { Container, Row, Col, Table } from "react-bootstrap";
+import { AiFillStar } from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromFavFunction } from "../redux/actions";
 import GoSerchPageButton from "./GoSearchPageButton";
@@ -44,15 +44,13 @@ const Favorites = () => {
                     </td>
                     <td>{job.candidate_required_location}</td>
                     <td>
-                      <Button
-                        variant="outline-danger"
-                        className="d-flex justify-content-center align-items-center px-2"
+                      <AiFillStar
+                        style={{ fontSize: "1.5rem", cursor: "pointer" }}
+                        className="text-primary"
                         onClick={() => {
                           dispatch(removeFromFavFunction(job._id));
                         }}
-                      >
-                        <AiFillDislike />
-                      </Button>
+                      />
                     </td>
                   </tr>
                 ))}
