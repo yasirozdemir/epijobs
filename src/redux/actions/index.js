@@ -27,7 +27,7 @@ export const addToFavFunction = (job) => {
 // };
 
 export const removeFromFavFunction = (jobId) => {
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
     dispatch({
       type: REMOVE_FROM_FAV,
       payload: jobId,
