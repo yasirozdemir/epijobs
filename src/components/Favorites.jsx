@@ -1,7 +1,6 @@
 import { Container, Row, Col, Button, Table } from "react-bootstrap";
 import { AiFillDislike } from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { removeFromFavFunction } from "../redux/actions";
 import GoSerchPageButton from "./GoSearchPageButton";
 
