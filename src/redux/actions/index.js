@@ -36,15 +36,22 @@ export const removeFromFunction = (job) => {
   };
 };
 
-export const getJobData = () => {
+export const getJobData = (query) => {
   return async (dispatch) => {
+    console.log(query);
     try {
-      const response = await fetch();
+      const response = await fetch(
+        "https://strive-benchmark.herokuapp.com/api/jobs?search=" +
+          query +
+          "&limit=20"
+      );
+      console.log("response", response);
       if (response.ok) {
         const jobData = await response.json();
+        console.log(jobData.data);
         dispatch({
           type: SET_JOB_DATA,
-          payload: jobData,
+          payload: jobData.data,
         });
       } else {
         console.log("error");
@@ -54,3 +61,5 @@ export const getJobData = () => {
     }
   };
 };
+
+export const trial = () => {};

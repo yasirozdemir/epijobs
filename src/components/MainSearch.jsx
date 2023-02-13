@@ -1,17 +1,18 @@
 import { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { AiFillStar } from "react-icons/ai";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { getJobData } from "../redux/actions";
 import Job from "./Job";
 
 const MainSearch = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [query, setQuery] = useState("");
-  const [jobs, setJobs] = useState([]);
-
-  const baseEndpoint =
-    "https://strive-benchmark.herokuapp.com/api/jobs?search=";
+  const jobs = useSelector((state) => state.job.jobs[0]);
+  console.log("jobs", jobs);
 
   const handleChange = (e) => {
     setQuery(e.target.value);
@@ -19,18 +20,7 @@ const MainSearch = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    try {
-      const response = await fetch(baseEndpoint + query + "&limit=20");
-      if (response.ok) {
-        const { data } = await response.json();
-        setJobs(data);
-      } else {
-        alert("Error fetching results");
-      }
-    } catch (error) {
-      console.log(error);
-    }
+    dispatch(getJobData(query));
   };
 
   return (
