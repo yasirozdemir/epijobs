@@ -1,6 +1,7 @@
 import { Container, Row, Col, Table } from "react-bootstrap";
 import { AiFillStar } from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { removeFromFavFunction } from "../redux/actions";
 import GoSerchPageButton from "./GoSearchPageButton";
 
@@ -38,9 +39,23 @@ const Favorites = () => {
                     <td>
                       <strong>{index + 1}</strong>
                     </td>
-                    <td>{job.company_name}</td>
                     <td>
-                      <strong>{job.title}</strong>
+                      <Link to={`/${job.company_name}`} className="text-dark">
+                        {job.company_name}
+                      </Link>
+                    </td>
+                    <td>
+                      <strong>
+                        <a
+                          href={job.url}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-dark"
+                          style={{ fontWeight: 700 }}
+                        >
+                          {job.title}
+                        </a>
+                      </strong>
                     </td>
                     <td>{job.candidate_required_location}</td>
                     <td>

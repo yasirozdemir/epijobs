@@ -2,3 +2,16 @@
 .table tbody button:focus {
   box-shadow: none;
 }
+
+.jobCard {
+  background-color: white;
+}
+
+.jobCard a:hover,
+.table tbody a:hover {
+  color: var(--blue) !important;
+}
+
+body {
+  background-color: #0415271e;
+}
