@@ -4,7 +4,7 @@ import JobReducer from "../reducers/JobReducer";
 
 const store = configureStore({
   reducer: combineReducers({
-    fav: favReducer,
+    favorites: favReducer,
     job: JobReducer,
   }),
 });

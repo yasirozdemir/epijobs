@@ -2,6 +2,7 @@ import { Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AiTwotoneLike, AiFillDislike } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
+import { addToFavFunction } from "../redux/actions";
 
 const Job = ({ data, index }) => {
   const dispatch = useDispatch();
@@ -48,10 +49,7 @@ const Job = ({ data, index }) => {
             variant="outline-success"
             className="d-flex justify-content-center align-items-center px-2"
             onClick={() => {
-              dispatch({
-                type: "ADD_TO_FAV",
-                payload: data,
-              });
+              dispatch(addToFavFunction(data));
             }}
           >
             <AiTwotoneLike />
