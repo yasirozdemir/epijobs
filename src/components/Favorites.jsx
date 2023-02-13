@@ -3,11 +3,11 @@ import { AiFillDislike } from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { removeFromFavFunction } from "../redux/actions";
+import GoSerchPageButton from "./GoSearchPageButton";
 
 const Favorites = () => {
   const favorites = useSelector((state) => state.favorites.content);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   return (
     <>
@@ -20,13 +20,7 @@ const Favorites = () => {
             <h1 className="my-2" variant="primary">
               Favorites
             </h1>
-            <Button
-              variant="primary"
-              className="d-flex justify-content-center align-items-center px-2"
-              onClick={() => navigate("/")}
-            >
-              Go to search page!
-            </Button>
+            <GoSerchPageButton />
           </Col>
           <Col xs={10}>
             <Table striped="columns">
