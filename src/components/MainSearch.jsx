@@ -12,7 +12,6 @@ const MainSearch = () => {
 
   const [query, setQuery] = useState("");
   const jobs = useSelector((state) => state.job.jobs[0]);
-  console.log("jobs", jobs);
 
   const handleChange = (e) => {
     setQuery(e.target.value);
@@ -49,11 +48,13 @@ const MainSearch = () => {
             />
           </Form>
         </Col>
-        <Col xs={10} className="mx-auto mb-5">
-          {jobs.map((jobData, index) => (
-            <Job key={jobData._id} data={jobData} index={index} />
-          ))}
-        </Col>
+        {jobs && (
+          <Col xs={10} className="mx-auto mb-5">
+            {jobs.map((jobData, index) => (
+              <Job key={jobData._id} data={jobData} index={index} />
+            ))}
+          </Col>
+        )}
       </Row>
     </Container>
   );
