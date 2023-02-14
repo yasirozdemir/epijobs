@@ -20,10 +20,7 @@ const MainSearch = () => {
 
   const [query, setQuery] = useState("");
   const jobs = useSelector((state) => state.job.jobData);
-  console.log(
-    "state: ",
-    useSelector((state) => state)
-  );
+
   const isLoading = useSelector((state) => state.job.isLoadingJob);
   const isError = useSelector((state) => state.job.isErrorJob);
 
