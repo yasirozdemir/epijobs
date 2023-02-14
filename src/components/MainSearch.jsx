@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Container,
   Row,
@@ -11,7 +11,7 @@ import {
 import { AiFillStar } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getJobData } from "../redux/actions";
+import { getJobData, SET_JOB_DATA } from "../redux/actions";
 import Job from "./Job";
 
 const MainSearch = () => {
@@ -23,6 +23,15 @@ const MainSearch = () => {
 
   const isLoading = useSelector((state) => state.job.isLoadingJob);
   const isError = useSelector((state) => state.job.isErrorJob);
+
+  useEffect(() => {
+    // cleaning the previous search results on component did mount
+    dispatch({
+      type: SET_JOB_DATA,
+      payload: [],
+    });
+    // eslint-disable-next-line
+  }, []);
 
   const handleChange = (e) => {
     setQuery(e.target.value);
