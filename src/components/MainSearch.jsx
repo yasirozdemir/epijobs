@@ -60,7 +60,7 @@ const MainSearch = () => {
           </Form>
         </Col>
         <Col xs={10} className="mx-auto d-flex justify-content-center">
-          {isLoading && (
+          {query && isLoading && (
             <Spinner animation="grow" variant="primary" className="mt-3" />
           )}
           {isError && (
