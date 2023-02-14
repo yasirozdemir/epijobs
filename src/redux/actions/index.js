@@ -78,6 +78,10 @@ export const getJobData = (query) => {
         type: SET_IS_ERROR_JOB,
         payload: true,
       });
+      dispatch({
+        type: SET_IS_LOADING_JOB,
+        payload: false,
+      });
     }
   };
 };
