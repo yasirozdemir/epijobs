@@ -57,6 +57,10 @@ export const getJobData = (query) => {
           type: SET_IS_LOADING_JOB,
           payload: false,
         });
+        dispatch({
+          type: SET_IS_ERROR_JOB,
+          payload: false,
+        });
       } else {
         console.log("error");
         dispatch({
@@ -92,6 +96,10 @@ export const getCompanyData = (companyName) => {
         });
         dispatch({
           type: SET_IS_LOADING_COMPANY,
+          payload: false,
+        });
+        dispatch({
+          type: SET_IS_ERROR_COMPANY,
           payload: false,
         });
       } else {
