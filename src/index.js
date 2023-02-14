@@ -6,13 +6,17 @@ import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style/style.css";
 
-import store from "./redux/store";
 import { Provider } from "react-redux";
+
+import { store, persistedStore } from "./redux/store";
+import { PersistGate } from "redux-persist/integration/react";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <Provider store={store}>
-    <App />
+    <PersistGate persistor={persistedStore}>
+      <App />
+    </PersistGate>
   </Provider>
 );
