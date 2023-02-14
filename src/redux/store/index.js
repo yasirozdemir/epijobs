@@ -3,7 +3,7 @@ import CompanyReducer from "../reducers/CompanyReducer";
 import FavReducer from "../reducers/FavReducer";
 import JobReducer from "../reducers/JobReducer";
 import { persistStore, persistReducer } from "redux-persist";
-import localStorage from "redux-persist/es/storage";
+import localStorage from "redux-persist/lib/storage";
 import { encryptTransform } from "redux-persist-transform-encrypt";
 
 const persistConfig = {

@@ -28,16 +28,24 @@ const CompanySearchResults = () => {
         >
           <h1 variant="primary">{params.companyName}</h1>
           <GoSerchPageButton />
-        </Col>
+        </Col>{" "}
       </Row>
       <Row className="justify-content-center">
+        <Col xs={10} className="mx-auto d-flex justify-content-center">
+          {isLoading && (
+            <Spinner animation="grow" variant="primary" className="mt-3" />
+          )}
+          {isError && (
+            <Alert variant="danger" className="mt-3">
+              Something went wrong!
+            </Alert>
+          )}
+        </Col>
         {jobs && (
           <Col xs={10}>
             {jobs.map((jobData) => (
               <Job key={jobData._id} job={jobData} />
             ))}
-            {isLoading && <Spinner animation="grow" variant="primary" />}
-            {isError && <Alert variant="danger">Something went wrong!</Alert>}
           </Col>
         )}
       </Row>
