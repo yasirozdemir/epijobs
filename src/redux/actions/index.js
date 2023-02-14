@@ -41,6 +41,10 @@ export const removeFromFavFunction = (jobId) => {
 
 export const getJobData = (query) => {
   return async (dispatch) => {
+    dispatch({
+      type: SET_IS_LOADING_JOB,
+      payload: true,
+    });
     try {
       const response = await fetch(
         "https://strive-benchmark.herokuapp.com/api/jobs?search=" +
