@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Alert, Spinner } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getCompanyData } from "../redux/actions";
@@ -8,8 +8,11 @@ import GoSerchPageButton from "./GoSearchPageButton";
 
 const CompanySearchResults = () => {
   const dispatch = useDispatch();
-  const jobs = useSelector((state) => state.company);
+  const jobs = useSelector((state) => state.company.companyData);
   const params = useParams();
+  console.log(useSelector((state) => state.company));
+  const isLoading = useSelector((state) => state.company.isLoadingCompany);
+  const isError = useSelector((state) => state.company.isErrorCompany);
 
   useEffect(() => {
     dispatch(getCompanyData(params.companyName));
@@ -33,6 +36,8 @@ const CompanySearchResults = () => {
             {jobs.map((jobData) => (
               <Job key={jobData._id} job={jobData} />
             ))}
+            {isLoading && <Spinner animation="grow" variant="primary" />}
+            {isError && <Alert variant="danger">Something went wrong!</Alert>}
           </Col>
         )}
       </Row>
