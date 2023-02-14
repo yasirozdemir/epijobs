@@ -59,9 +59,15 @@ const MainSearch = () => {
             />
           </Form>
         </Col>
-        <Col xs={10} className="mx-auto d-flex justify-content-center mt-3">
-          {isLoading && <Spinner animation="grow" variant="primary" />}
-          {isError && <Alert variant="danger">Something went wrong!</Alert>}
+        <Col xs={10} className="mx-auto d-flex justify-content-center">
+          {isLoading && (
+            <Spinner animation="grow" variant="primary" className="mt-3" />
+          )}
+          {isError && (
+            <Alert variant="danger" className="mt-3">
+              Something went wrong!
+            </Alert>
+          )}
         </Col>
         {jobs && (
           <Col xs={10} className="mx-auto mb-5">
