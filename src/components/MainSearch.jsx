@@ -1,5 +1,13 @@
 import { useState } from "react";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Form,
+  Button,
+  Alert,
+  Spinner,
+} from "react-bootstrap";
 import { AiFillStar } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -16,6 +24,8 @@ const MainSearch = () => {
     "state: ",
     useSelector((state) => state)
   );
+  const isLoading = useSelector((state) => state.job.isLoadingJob);
+  const isError = useSelector((state) => state.job.isErrorJob);
 
   const handleChange = (e) => {
     setQuery(e.target.value);
@@ -57,6 +67,8 @@ const MainSearch = () => {
             {jobs.map((jobData) => (
               <Job key={jobData._id} job={jobData} />
             ))}
+            {isLoading && <Spinner animation="grow" variant="primary" />}
+            {isError && <Alert variant="danger">Something went wrong!</Alert>}
           </Col>
         )}
       </Row>
